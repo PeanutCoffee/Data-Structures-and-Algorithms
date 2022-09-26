@@ -1,4 +1,4 @@
-# DSA
+<!-- # DSA -->
 
 # HacktoberFest 2022
 
