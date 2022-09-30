@@ -18,7 +18,7 @@ A month-long celebration from October 1st - 31st sponsored by [Digital Ocean](ht
 ## How To Contribute to This Project
 Here are 3 quick and painless steps to contribute to this project:
 
-* Add a program in any language. (A simple Hello World would suffice.)
+* Add a program in any language. (Any algorithm would work - Java/C++/Python)
 To do so, first create an issue with the task you are doing, for example: "Issue - creating bubble sort in C". Add the `HacktoberFest 2022` label in the issue and assign the issue to yourself. Create a pull request in response to that issue and finally submit it for review.
 
 * Name your branch `username_hello_world_in_c`.
