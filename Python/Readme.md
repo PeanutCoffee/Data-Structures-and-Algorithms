@@ -1,4 +1,4 @@
-<h1>INTERVIEW QUESTIONS<h1>
+----------------INTERVIEW QUESTIONS----------------
 
 PYTHON
 1. Is Python Object Oriented Language?
@@ -15,7 +15,7 @@ remove- Removes the first item with the specified value
 del- Removes that index
 slice- slice any sequence
 
-5.List vs Array.
+5. List vs Array.
 List - No fixed size, delete and append possible.
 Array- Fixed size
 
@@ -31,7 +31,7 @@ Enumerate method adds a counter to an iterable and returns it in a form of enume
 8. What is tuple? Can you edit a tuple? And how?
 Used to store multiple item. No. Either convert it into a list or use tuple inside tuple.
 
-9.What is ‘self’ and ‘__init__’. Where is it used?
+9. What is ‘self’ and ‘__init__’. Where is it used?
 Used to reference the current instance of a class and used to access variables that belong to that class.
 __init__is a default constructor to initialize an object's state.
 
