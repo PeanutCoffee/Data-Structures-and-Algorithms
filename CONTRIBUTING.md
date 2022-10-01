@@ -1,3 +1,4 @@
+
 # Contributing Guidelines
 * Start with creating an issue, for example "Issue - creating bubble sort in C".
 * Add the `HacktoberFest 2022` label in the issue and assign it to yourself.
@@ -24,3 +25,17 @@
 * [gemini30](https://github.com/gemini30)
 * [Anikaaasingh](https://github.com/Anikaaasingh)
 * [AjitVarpe](https://github.com/AjitVarpe)
+
+
+### Contribute.md Template
+
+#### Name: [Your Name](https://github.com/user-name/)
+- Place: 🏝
+- Bio: ☣
+- GitHub: [Your Name](https://github.com/user-name/)
+
+
+#### Name: [Om Umrania](https://github.com/om-umrania/)
+- Place: Maharashtra, India
+- Bio: Life Long Learner
+- GitHub: [Om Umrania](https://github.com/om-umrania/)
