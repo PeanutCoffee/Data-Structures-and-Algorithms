@@ -15,7 +15,7 @@ def selectionSort(array, size):
         # Arranging min at the correct position
         (array[s], array[min_idx]) = (array[min_idx], array[s])
  
-data = [ 7, 2, 1, 6 ]
+data = [ 9,1,26,-7,-0 ]
 size = len(data)
 selectionSort(data, size)
  
