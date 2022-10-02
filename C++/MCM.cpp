@@ -21,7 +21,6 @@ int matrixMultiplication(vector<int> &arr, int N)
     }
     return dp[1][N - 1];
 }
-
 int main()
 {
     int n;
