@@ -1,34 +1,41 @@
-clc;
 clear all;
 close all;
-G = input('Enter Matrix:')
-[K, N] = size(G);
-m = dec2bin(0:2^K) - '0';
-[x, y] = size(m);
-m = m(1:(x - 1), 2:y);
-x = mod(m*G, 2);
-ham_wgt = zeros(1, N);
-for i=1:N
-s = sum(x(i,:));
-if (s > 0)
-ham_wgt(i) = s;
-else
-ham_wgt(i) = 8;
-end
-end
-Wmin = min(ham_wgt);
-error_detection_capability = Wmin - 1
-error_correction_capability = floor((Wmin - 1) / 2)
-P = G(:, 1:N - K);
-H = [eye(N - K), P'];
-Y = input('Give the Received Vector:')
-S = mod(Y * H', 2)
-pos = -1;
-Ht = H';
-for i=1:N
-if (S == Ht(i, : ))
-pos = i;
-end
-end
-X_cap = Y;
-X_cap(pos) = xor(X_cap(pos), 1);
+clc;
+M=25; %Hanning Window of Length=25 
+tau=(M-1)/2; 
+n=0:M-1; 
+hd=(2./(pi*(n-tau))).*(sin(pi*(n-tau)/2).^2); 
+hd(tau+1)=0; 
+whamm=hamming(M)'; 
+h=hd.*whamm; 
+w=-pi:0.01:pi;   %here we delay positive and negative frequency phases by pi/2 so range is +ve and -ve bothS
+Hw=freqz(h,1,w); 
+Hrw=exp(-j*((pi/2)-12*w)).*Hw;  %amplitude plotted using the function H(e^(jw))=Hr(e^jw)*exp(j(pi/2-tau*w))
+%Note: This is type 3 or 4 type filter used as this is antisymmetric
+subplot(2,2,1); 
+stem(n,hd,'filled'); 
+axis([-1 M -0.8 1]); 
+xlabel('n'); 
+ylabel('hd(n)'); 
+title('Ideal Impulse Response'); 
+
+subplot(2,2,2); 
+stem(n,whamm,'filled'); 
+axis([-1 M -0.2 1.2]); 
+xlabel('n'); 
+ylabel('w(n)'); 
+title('Hanning Window'); 
+
+subplot(2,2,3); 
+stem(n,h,'filled'); 
+axis([-1 M -0.8 1]); 
+xlabel('n'); 
+ylabel('h(n)'); 
+title('Practical Impulse Response'); 
+
+subplot(2,2,4); 
+plot(w/pi,Hrw); 
+axis([-1 1 -1.2 1.2]); 
+xlabel('Frequency in pi Units'); 
+ylabel('Amplitude'); 
+title('Amplitude Response'); 

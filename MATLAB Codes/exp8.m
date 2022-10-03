@@ -1,77 +1,41 @@
-clc;
 clear all;
 close all;
-n = input('Number of Symbols:');
-p = zeros(1, n);
-for i=1:n
-fprintf('Give the probability for %dth symbol:', i);
-p(i) = input('');
-end
-[p, I] = sort(p, 'descend');
-codes = getCodes(p, 1);
-Lk_pk = zeros(1, n);
-for i=1:length(codes)
-fprintf('\nCode for %dth Symbol: ', I(i));
-fprintf('%g ', codes{i});
-fprintf('\n');
-Lk_pk(i) = length(codes{i}) * p(i);
-end
-avg_L = sum(Lk_pk);
-Entropy = 0;
-for i=1:n
-Entropy = Entropy + (-1 * p(i) * log2(p(i)));
-end
-fprintf('\nEntropy: %f\n', Entropy);
-efficiency = (Entropy / avg_L) * 100;
-fprintf('\nEfficiency: %f\n', efficiency);
-function codes=getCodes(p, tp)
-if (length(p) == 1 || length(p) == 2)
-if (length(p) == 2)
-codes = {[0]; [1]};
-else
-codes = {[]};
-end
-else
-sum = 0;
-prevSum = 0;
-codes = cell(length(p), 1);
-index = -1;
-mid = tp/2;
-first = 1;
-for i=1:length(p)
-prevSum = sum;
-sum = sum + p(i);
-if (sum <= tp / 2)
-codes{i} = [0];
-else
-if (abs(tp/2 - sum) <= abs(tp/2 - prevSum))
-codes{i} = [0];
-else
-if (first)
-index = i;
-first = 0;
-mid = prevSum;
-end
-codes{i} = [1];
-end
-end
-end
-%Recursively Getting the codes
-codesUp = getCodes(p(1:index - 1), mid);
-codesDown = getCodes(p(index:length(p)), tp - mid);
-%Concatenating
-i = 1;
-j = 1;
-while(j <= length(codesUp))
-codes{i} = [codes{i}, codesUp{j}];
-i = i + 1;
-j = j + 1;
-end
-j = 1;
-while (j <= length(codesDown))
-codes{i} = [codes{i}, codesDown{j}];
-i = i + 1;
-j = j + 1;
-end
-end
-end
+clc;
+M=21; %Hamming Window Length=21 
+tau=(M-1)/2; 
+n=0:M-1; 
+hd=((cos(pi*(n-tau)))./(n-tau))-((sin(pi*(n-tau)))./(pi*(n-tau).^2));  %manually calculated impulse response
+hd(tau+1)=0;   %manually calculated using l'hopital's
+whamm=hamming(M)';   %converted to column matrix for multiplication
+h=hd.*whamm; 
+w=0:0.01:pi; 
+Hw=freqz(h,1,w); 
+Hrw=exp(-j*(pi/2-10*w)).*Hw; %amplitude plotted using the function H(e^(jw))=Hr(e^jw)*exp(j(pi/2-tau*w))
+
+subplot(2,2,1); 
+stem(n,hd,'filled'); 
+axis([-1 M -1.2 1.2]); 
+xlabel('n'); 
+ylabel('hd(n)'); 
+title('Ideal Impulse Response'); 
+
+subplot(2,2,2); 
+stem(n,whamm,'filled'); 
+axis([-1 M -0.2 1.2]); 
+xlabel('n'); 
+ylabel('w(n)'); 
+title('Hamming Window'); 
+
+subplot(2,2,3); 
+stem(n,h,'filled'); 
+axis([-1 M -1.2 1.2]); 
+xlabel('n'); 
+ylabel('h(n)'); 
+title('Practical Impulse Response'); 
+
+subplot(2,2,4); 
+plot(w,Hrw); 
+axis([0 pi 0 pi]); 
+xlabel('Frequency'); 
+ylabel('Amplitude'); 
+title('Amplitude Response'); 
