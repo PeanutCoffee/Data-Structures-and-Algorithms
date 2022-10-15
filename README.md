@@ -1,6 +1,8 @@
 <!-- # DSA -->
 
-# HacktoberFest 2022
+# Excluded from HacktoberFest 2022
+
+## This repository has been excluded from HacktoberFest. Please do not submit any Pull Request.
 
 Anyone can use this project to make their contribution to an open source project on GitHub.
 
