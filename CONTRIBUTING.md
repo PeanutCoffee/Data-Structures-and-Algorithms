@@ -26,7 +26,7 @@
 * [Anikaaasingh](https://github.com/Anikaaasingh)
 * [AjitVarpe](https://github.com/AjitVarpe)
 * [RonakVadhaiya](https://github.com/Rac-Ro007)
-
+* [AnuragRoy485](https://github.com/AnuragRoy485)
 
 ### Contribute.md Template
 
@@ -37,6 +37,15 @@
 
 
 #### Name: [Om Umrania](https://github.com/om-umrania/)
+- Place: Maharashtra, India
+- Bio: Life Long Learner
+- GitHub: [Om Umrania](https://github.com/om-umrania/)
+
+
+#### Name: [Anurag Roy](https://github.com/AnuragRoy485)
+- Place: West Bengal, India
+- Bio: Programmer
+- GitHub: [AnuragRoy485](https://github.com/AnuragRoy485)
 - Place: Maharashtra, India
 - Bio: Life Long Learner
 - GitHub: [Om Umrania](https://github.com/om-umrania/)
